@@ -13,16 +13,16 @@ namespace medical_common.Models
         private string _problem { get; set; }
         private DateTime _timeRegistered { get; set; }
 
-        public Patient(string name, Address address, string tAJ, string problem)
+        public Patient(string name, Address address, string TAJ, string problem)
         {
             _name = name;
             _address = address;
-            _TAJ = tAJ;
+            _TAJ = TAJ;
             _problem = problem;
             _timeRegistered = DateTime.Now;
         }
 
-        public Patient(string name, Address address, string tAJ, string problem, DateTime timeRegistered) : this(name, address, tAJ, problem)
+        public Patient(string name, Address address, string TAJ, string problem, DateTime timeRegistered) : this(name, address, TAJ, problem)
         {
             _timeRegistered = timeRegistered;
         }
