@@ -11,6 +11,7 @@ namespace medical_common.Models
         // TAJ: Hungarian social security number
         public string TAJ { get; set; }
         public string Problem { get; set; }
+        public string Diagnosis { get; set; }
         public DateTime TimeRegistered { get; set; }
 
         public Patient()
@@ -23,6 +24,7 @@ namespace medical_common.Models
             Address = address;
             this.TAJ = TAJ;
             Problem = problem;
+            Diagnosis = "";
             TimeRegistered = DateTime.Now;
         }
 
