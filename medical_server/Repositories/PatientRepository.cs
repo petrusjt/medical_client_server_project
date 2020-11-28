@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using medical_common.Models;
 using System.IO;
+using System.Text;
 
 namespace medical_server.Repositories
 {
@@ -21,7 +22,7 @@ namespace medical_server.Repositories
                 Directory.CreateDirectory(appDataPath + "\\" + "PatientData");
             }
             string jsonString = JsonSerializer.Serialize(patients);
-            File.WriteAllText(filePath, jsonString);
+            File.WriteAllText(filePath, jsonString, Encoding.UTF8);
         }
 
         public static IList<Patient> LoadPatients()
@@ -30,9 +31,12 @@ namespace medical_server.Repositories
             {
                 if (File.Exists(filePath))
                 {
-                    string json = File.ReadAllText(filePath);
-                    List<Patient> patients = JsonSerializer.Deserialize<List<Patient>>(json);
-                    return patients;
+                    string json = File.ReadAllText(filePath, Encoding.UTF8);
+                    if(!string.IsNullOrWhiteSpace(json))
+                    {
+                        List<Patient> patients = JsonSerializer.Deserialize<List<Patient>>(json);
+                        return patients;
+                    }
                 }
             }
             return new List<Patient>();
