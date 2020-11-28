@@ -15,6 +15,10 @@ namespace medical_common.Models
         public int Floor { get; set; }
         public int ApartmentNumber { get; set; }
 
+        public Address()
+        {
+        }
+
         public Address(string country, string region, string city, string street_name, int street_number, char staircase_ref=' ', int floor=0, int apartment_number=0)
         {
             Country = country;
@@ -25,6 +29,16 @@ namespace medical_common.Models
             StaircaseRef = staircase_ref;
             Floor = floor;
             ApartmentNumber = apartment_number;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override string ToString()
+        {
+            return $"Address({Country}, {Region}, {City}, {StreetName}, {StreetNumber}, {StaircaseRef}, {Floor}, {ApartmentNumber})";
         }
     }
 }

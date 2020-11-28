@@ -13,6 +13,10 @@ namespace medical_common.Models
         public string Problem { get; set; }
         public DateTime TimeRegistered { get; set; }
 
+        public Patient()
+        {
+        }
+
         public Patient(string name, Address address, string TAJ, string problem)
         {
             Name = name;
@@ -25,6 +29,11 @@ namespace medical_common.Models
         public Patient(string name, Address address, string TAJ, string problem, DateTime timeRegistered) : this(name, address, TAJ, problem)
         {
             TimeRegistered = timeRegistered;
+        }
+
+        public override string ToString()
+        {
+            return $"Patient({Name}, {Address}, {TAJ}, {Problem}, {TimeRegistered})";
         }
     }
 }

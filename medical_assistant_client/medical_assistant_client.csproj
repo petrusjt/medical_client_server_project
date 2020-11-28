@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\medical_common\medical_common.csproj">
+      <Project>{4f2ea0c2-f50f-4cac-b5dc-6a3dd99343af}</Project>
+      <Name>medical_common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
