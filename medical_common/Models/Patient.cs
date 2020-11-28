@@ -6,25 +6,25 @@ namespace medical_common.Models
 {
     public class Patient
     {
-        private string _name { get; set; }
-        private Address _address { get; set; }
+        public string Name { get; set; }
+        public Address Address { get; set; }
         // TAJ: Hungarian social security number
-        private string _TAJ { get; set; }
-        private string _problem { get; set; }
-        private DateTime _timeRegistered { get; set; }
+        public string TAJ { get; set; }
+        public string Problem { get; set; }
+        public DateTime TimeRegistered { get; set; }
 
         public Patient(string name, Address address, string TAJ, string problem)
         {
-            _name = name;
-            _address = address;
-            _TAJ = TAJ;
-            _problem = problem;
-            _timeRegistered = DateTime.Now;
+            Name = name;
+            Address = address;
+            this.TAJ = TAJ;
+            Problem = problem;
+            TimeRegistered = DateTime.Now;
         }
 
         public Patient(string name, Address address, string TAJ, string problem, DateTime timeRegistered) : this(name, address, TAJ, problem)
         {
-            _timeRegistered = timeRegistered;
+            TimeRegistered = timeRegistered;
         }
     }
 }
