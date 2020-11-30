@@ -1,4 +1,5 @@
 ﻿using medical_common.Models;
+using medical_server.Authentication;
 using medical_server.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,16 +31,34 @@ namespace medical_server.Controllers
 		public ActionResult AddPatient([FromBody]Patient patient)
         {
 			var patients = PatientRepository.LoadPatients();
-			if(patients.Contains(patient))
+            if (!patients.Contains(patient))
             {
-				return Conflict();
+                patients.Add(patient);
+                PatientRepository.WritePatients(patients);
+                return Ok();
             }
-			else
+            else
             {
-				patients.Add(patient);
-				PatientRepository.WritePatients(patients);
-				return Ok();
-			}
+                return Conflict();
+            }
+        }
+
+		[Route("auth")]
+		[HttpGet]
+		public ActionResult<AuthenticationRequestBase> PrintAuthRequest()
+        {
+			var a = new AuthenticationRequestBase();
+			a.Password = "Password";
+			a.Username = "Assistant";
+			return Ok(a);
+        }
+
+		[Route("auth")]
+		[HttpPost]
+		public ActionResult AuthenticateAssistant([FromBody] AuthenticationRequestBase authenticationRequest)
+        {
+			AssistantAuthenticator assistantAuthenticator = new AssistantAuthenticator();
+			return assistantAuthenticator.Authenticate(authenticationRequest.Username, authenticationRequest.Password);
         }
 	}
 }
