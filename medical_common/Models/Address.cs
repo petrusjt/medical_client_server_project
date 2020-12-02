@@ -19,7 +19,7 @@ namespace medical_common.Models
         {
         }
 
-        public Address(string country, string region, string city, string street_name, int street_number, char staircase_ref=' ', int floor=0, int apartment_number=0)
+        public Address(string country, string region, string city, string street_name, int street_number, char staircase_ref=' ', int floor=-1, int apartment_number=0)
         {
             Country = country;
             Region = region;
