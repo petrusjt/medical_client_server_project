@@ -28,11 +28,11 @@
 			<TextBox x:Name="StreetTextBox" HorizontalAlignment="Left" Height="23" Margin="180,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
             <Label Content="Házszám, Lépcsőház*:" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top" Height="30"/>
 			<TextBox x:Name="StreetNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="180,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
-			<TextBox x:Name="StaircaseRefTextBox" HorizontalAlignment="Left" Height="23" Margin="290,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
+			<TextBox x:Name="StaircaseRefTextBox" HorizontalAlignment="Left" Height="23" Margin="290,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90" MaxLength="1"/>
             <Label Content="Emelet*, Ajtó*:" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Height="30"/>
 			<TextBox x:Name="FloorTextBox" HorizontalAlignment="Left" Height="23" Margin="180,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
 			<TextBox x:Name="ApartmentNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="290,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
-            <Button Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,35" Content="Páciens felvétele"></Button>
+            <Button Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,35" Content="Páciens felvétele" Click="Button_Click"></Button>
             <Label Content="A csillaggal(*) jelölt mezők kitöltése nem kötelező." HorizontalAlignment="Center" Margin="10,345,0,0" VerticalAlignment="Bottom" Height="30"/>
         </Grid>
     </Grid>

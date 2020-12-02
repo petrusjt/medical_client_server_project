@@ -1,4 +1,6 @@
-﻿using System;
+﻿using medical_assistant_client.Authentication;
+using medical_common.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -28,10 +30,27 @@ namespace medical_assistant_client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PatientRegistrationWindow patientRegistration = new PatientRegistrationWindow();
-            patientRegistration.Show();
-            patientRegistration.Closing += new CancelEventHandler((object sender2, CancelEventArgs e2) => this.Show());
-            this.Hide();
+            AuthenticationRequestBase request = new AuthenticationRequestBase();
+            request.Username = UsernameTextBox.Text;
+            request.Password = PasswordPasswordBox.Password;
+			try
+			{
+                AssistantAuthenticatorClient authenticatorClient = new AssistantAuthenticatorClient();
+                authenticatorClient.Authenticate(request);
+
+                PatientRegistrationWindow patientRegistration = new PatientRegistrationWindow();
+                patientRegistration.Show();
+                patientRegistration.Closing += new CancelEventHandler((object sender2, CancelEventArgs e2) => this.Show());
+                this.Hide();
+            }
+            catch(AggregateException)
+			{
+                MessageBox.Show("A szerverrel nem sikerült kapcsolatot létesíteni.");
+			}
+            catch(Exception)
+			{
+                MessageBox.Show("A bejelentkezés sikertelen.");
+			}
             
         }
     }
