@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.IO;
-<<<<<<< HEAD
-using medical_common.Models;
-=======
 using System.Text;
->>>>>>> 27b7c5fcf06b574f86ef1b882adece767f7a0215
+using medical_common.Models;
 
 namespace medical_server.Repositories
 {
