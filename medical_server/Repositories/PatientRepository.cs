@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using medical_common.Models;
 using System.IO;
+using medical_common.Models;
 
 namespace medical_server.Repositories
 {

@@ -4,6 +4,36 @@
              xmlns:local="clr-namespace:medical_doctor_client"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="ButtonTemplate" TargetType="Button">
+            <Setter Property="Background" >
+                <Setter.Value>
+                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                        <RadialGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                <TranslateTransform X="0.01" Y="0.3"/>
+                            </TransformGroup>
+                        </RadialGradientBrush.RelativeTransform>
+                        <GradientStop Color="#7ebcea" Offset="0"/>
+                        <GradientStop Color="#2f4b8f" Offset="0.5"/>
+                        <GradientStop Color="#426ab7" Offset="0.1"/>
+                        <GradientStop Color="#263e75" Offset="0.7"/>
+                    </RadialGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
     </Application.Resources>
 </Application>
