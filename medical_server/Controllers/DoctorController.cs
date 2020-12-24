@@ -22,10 +22,11 @@ namespace medical_server.Controllers
         
         [Route("authdoctor")]
         [HttpPost]
-        public ActionResult AuthenticateAssistant([FromBody] AuthenticationRequestBase authenticationRequest)
+        public ActionResult AuthenticateDoctor([FromBody] AuthenticationRequestBase authenticationRequest)
         {
-            AssistantAuthenticator assistantAuthenticator = new AssistantAuthenticator();
-            return assistantAuthenticator.Authenticate(authenticationRequest.Username, authenticationRequest.Password);
+            DoctorAuthenticator doctorAuthenticator = new DoctorAuthenticator();
+            return doctorAuthenticator.Authenticate(authenticationRequest.Username, authenticationRequest.Password);
         }
+
     }
 }

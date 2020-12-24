@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace medical_doctor_client.Authentication
 {
-    class DoctorAuthenticatorClient
-    {
-		const string _url = "http://localhost:5000/api/doctor/doctorauth";
+	class DoctorAuthenticatorClient
+	{
+
+		const string _url = "http://localhost:5000/api/doctor/authdoctor";
 		public void Authenticate(AuthenticationRequestBase request)
 		{
 			using (var client = new HttpClient())

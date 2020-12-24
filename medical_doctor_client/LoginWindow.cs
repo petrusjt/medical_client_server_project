@@ -25,7 +25,7 @@ namespace medical_doctor_client
     {
         public LoginWindow()
         {
-            
+            InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
