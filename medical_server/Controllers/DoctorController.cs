@@ -66,5 +66,11 @@ namespace medical_server.Controllers
             return NotFound();
         }
 
+        [Route("getallpatients")]
+        [HttpGet]
+        public ActionResult<List<Patient>> GetAllPatients()
+        {
+            return Ok(PatientRepository.LoadPatients());
+        }
     }
 }
