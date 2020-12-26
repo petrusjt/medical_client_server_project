@@ -75,6 +75,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Authentication\DoctorAuthenticatorClient.cs" />
+    <Compile Include="DataProviders\PatientDataProvider.cs" />
     <Compile Include="DiagnosisWindow.xaml.cs">
       <DependentUpon>DiagnosisWindow.xaml</DependentUpon>
     </Compile>
@@ -117,9 +118,9 @@
       <Name>medical_common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\doctor.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

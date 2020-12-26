@@ -1,12 +1,15 @@
-﻿<Window x:Class="medical_doctor_client.DiagnosisWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:medical_doctor_client"
+        xmlns:Models="clr-namespace:medical_common.Models;assembly=medical_common" x:Class="medical_doctor_client.DiagnosisWindow"
         mc:Ignorable="d"
-        Title="DiagnosisWindow" Height="450" Width="800">
+        Title="DiagnosisWindow" Height="450" Width="800"
+        Background="#172333">
+
     <Grid>
-        
+        <DataGrid x:Name="PatientsDataGrid" Margin="15,15,15,20" SelectionUnit="FullRow" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="PatientsDataGrid_SelectionChanged" />
     </Grid>
 </Window>

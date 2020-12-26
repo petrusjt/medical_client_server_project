@@ -52,11 +52,11 @@ namespace medical_server.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public ActionResult DeletePatient(string id)
+        [HttpDelete("{taj}")]
+        public ActionResult DeletePatient(string taj)
         {
             var patients = PatientRepository.LoadPatients();
-            var patient = patients.FirstOrDefault(x => x.TAJ == id);
+            var patient = patients.FirstOrDefault(x => x.TAJ == taj);
             if (patient != null)
             {
                 patients.Remove(patient);

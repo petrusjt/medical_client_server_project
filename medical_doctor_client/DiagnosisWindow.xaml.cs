@@ -1,4 +1,6 @@
-﻿using System;
+﻿using medical_common.Models;
+using medical_doctor_client.DataProviders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,28 @@ namespace medical_doctor_client
     /// </summary>
     public partial class DiagnosisWindow : Window
     {
+        private IList<Patient> _patients;
         public DiagnosisWindow()
         {
             InitializeComponent();
+            UpdateTable();
+        }
+
+        private void UpdateTable()
+        {
+            _patients = PatientDataProvider.GetPatients();
+            PatientsDataGrid.ItemsSource = _patients.OrderByDescending((patient => patient.TimeRegistered));
+        }
+
+        private void PatientsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedPatient = PatientsDataGrid.SelectedItem as Patient;
+
+            if (selectedPatient != null)
+            {
+                Console.WriteLine(selectedPatient);
+                PatientsDataGrid.UnselectAll();
+            }
         }
     }
 }
