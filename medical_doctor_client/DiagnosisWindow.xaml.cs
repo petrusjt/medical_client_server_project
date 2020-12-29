@@ -31,7 +31,8 @@ namespace medical_doctor_client
         private void UpdateTable()
         {
             _patients = PatientDataProvider.GetPatients();
-            PatientsDataGrid.ItemsSource = _patients.OrderByDescending((patient => patient.TimeRegistered));
+            PatientsDataGrid.ItemsSource = _patients;
+            
         }
 
         private void PatientsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -40,7 +41,11 @@ namespace medical_doctor_client
 
             if (selectedPatient != null)
             {
-                Console.WriteLine(selectedPatient);
+                var window = new AddDiagnosis(selectedPatient);
+                if (window.ShowDialog() ?? false)
+                {
+                    UpdateTable();
+                }
                 PatientsDataGrid.UnselectAll();
             }
         }

@@ -6,10 +6,22 @@
         xmlns:local="clr-namespace:medical_doctor_client"
         xmlns:Models="clr-namespace:medical_common.Models;assembly=medical_common" x:Class="medical_doctor_client.DiagnosisWindow"
         mc:Ignorable="d"
-        Title="DiagnosisWindow" Height="450" Width="800"
+        Title="DiagnosisWindow" Height="768" Width="1024"
         Background="#172333">
 
     <Grid>
-        <DataGrid x:Name="PatientsDataGrid" Margin="15,15,15,20" SelectionUnit="FullRow" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="PatientsDataGrid_SelectionChanged" />
+        <DataGrid x:Name="PatientsDataGrid" Margin="25,25,25,30" SelectionUnit="FullRow" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="PatientsDataGrid_SelectionChanged" AutoGenerateColumns="False" AlternatingRowBackground="CadetBlue" AlternationCount="2" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="TAJ" Binding="{Binding TAJ}"/>
+                <DataGridTextColumn Header="Registration Time" Binding="{Binding TimeRegistered}"/>
+                <DataGridTextColumn Header="Country" Binding="{Binding Address.Country}"/>
+                <DataGridTextColumn Header="Region" Binding="{Binding Address.Region}"/>
+                <DataGridTextColumn Header="City" Binding="{Binding Address.City}"/>
+                <DataGridTextColumn Header="Street Name" Binding="{Binding Address.StreetName}"/>
+                <DataGridTextColumn Header="Street Number" Binding="{Binding Address.StreetNumber}"/>
+                <DataGridTextColumn Header="Problem" Binding="{Binding Problem}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

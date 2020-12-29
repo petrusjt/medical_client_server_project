@@ -35,7 +35,7 @@ namespace medical_common.Models
 
         public override string ToString()
         {
-            return $"Patient({Name}, {Address}, {TAJ}, {Problem}, {TimeRegistered})";
+            return $"Patient({Name}, {Address}, {TAJ}, {Problem}, {TimeRegistered},{Diagnosis})";
         }
 
         public override bool Equals(object obj)

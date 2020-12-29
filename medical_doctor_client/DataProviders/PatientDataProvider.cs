@@ -33,25 +33,31 @@ namespace medical_doctor_client.DataProviders
             }
         }
 
-        public static void UpdatePatient( Patient patient)
+        public static void UpdatePatient(Patient patient)
         {
             using (var client = new HttpClient())
             {
                 var rawData = JsonConvert.SerializeObject(patient);
                 var content = new StringContent(rawData, Encoding.UTF8, "application/json");
-                var response = client.PostAsync(_url, content).Result;
-                if (!response.IsSuccessStatusCode)
+                try
                 {
-                    throw new InvalidOperationException(response.StatusCode.ToString());
+                    var response = client.PutAsync(_url, content).Result;
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new InvalidOperationException();
+                    }
+                }
+                catch (AggregateException e)
+                {
+
                 }
             }
         }
-
-        public static void DeletePatient(string taj)
+        public static void DeletePatient(int token)
         {
             using (var client = new HttpClient())
             {
-                var response = client.DeleteAsync(_url + "/" + taj).Result;
+                var response = client.DeleteAsync(_url + "/" + token).Result;
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new InvalidOperationException(response.StatusCode.ToString());
