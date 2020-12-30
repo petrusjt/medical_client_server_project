@@ -53,8 +53,9 @@ namespace medical_doctor_client
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            PatientDataProvider.DeletePatient(_patient.TAJ, _patient.Problem);
+            DialogResult = true;
             this.Close();
-
         }
     }
 }

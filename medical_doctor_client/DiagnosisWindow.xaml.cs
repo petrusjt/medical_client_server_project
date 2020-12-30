@@ -42,7 +42,7 @@ namespace medical_doctor_client
             if (selectedPatient != null)
             {
                 var window = new AddDiagnosis(selectedPatient);
-                if (window.ShowDialog() ?? false)
+                if (window.ShowDialog() ?? true)
                 {
                     UpdateTable();
                 }

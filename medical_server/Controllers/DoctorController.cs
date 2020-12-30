@@ -47,19 +47,18 @@ namespace medical_server.Controllers
             return Ok();
         }
 
-        [HttpDelete("{token}")]
-        public ActionResult DeletePatient(long token)
+        [HttpDelete]
+        public ActionResult DeletePatient(string taj,string problem)
         {
             var patients = PatientRepository.LoadPatients();
-            
-            var patient = patients.FirstOrDefault(x => x.GetHashCode()==token);
+            var patient = patients.FirstOrDefault(x => x.TAJ==taj && x.Problem==problem);
             if (patient != null)
             {
                 patients.Remove(patient);
                 PatientRepository.WritePatients(patients);
                 return Ok();
             }
-            return NotFound();
+            return NotFound(taj + " " + problem);
         }
 
         [Route("getallpatients")]
@@ -68,5 +67,6 @@ namespace medical_server.Controllers
         {
             return Ok(PatientRepository.LoadPatients());
         }
+
     }
 }

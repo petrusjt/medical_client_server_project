@@ -13,7 +13,6 @@ namespace medical_doctor_client.DataProviders
     {
         private static string _url = "http://localhost:5000/api/doctor/";
         private static string _allpatientsurl = "getallpatients";
-
         public static IList<Patient> GetPatients()
         {
             using (var client = new HttpClient())
@@ -53,11 +52,11 @@ namespace medical_doctor_client.DataProviders
                 }
             }
         }
-        public static void DeletePatient(int token)
+        public static void DeletePatient(string taj,string problem)
         {
             using (var client = new HttpClient())
             {
-                var response = client.DeleteAsync(_url + "/" + token).Result;
+                var response = client.DeleteAsync(_url + "?taj=" + taj+"&problem=" + problem).Result;
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new InvalidOperationException(response.StatusCode.ToString());
