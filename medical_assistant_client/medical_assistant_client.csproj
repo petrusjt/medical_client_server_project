@@ -124,5 +124,6 @@
   <ItemGroup>
     <Resource Include="Resources\nurse.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

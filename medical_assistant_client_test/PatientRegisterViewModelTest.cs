@@ -40,6 +40,7 @@ namespace medical_assistant_client_test
             Patient patient5 = new Patient("Kun Béla", null, "111 111 111", "Béna");
 
             //Act + Assert
+            Assert.IsFalse(PatientRegisterViewModel.ValidatePatientData(null));
             Assert.IsFalse(PatientRegisterViewModel.ValidatePatientData(patient0));
             Assert.IsFalse(PatientRegisterViewModel.ValidatePatientData(patient1));
             Assert.IsFalse(PatientRegisterViewModel.ValidatePatientData(patient2));
@@ -64,6 +65,8 @@ namespace medical_assistant_client_test
         }
 
         [DataTestMethod]
+        [DataRow(null, null, null, null, null)]
+        [DataRow(null, null, null, null, 0)]
         public void ValidateAddressData_WithInvalidAddressData(string country, string region, string city, string streetName, int streetNumber)
         {
             //Arrange
@@ -71,6 +74,15 @@ namespace medical_assistant_client_test
 
             //Act + Assert
             Assert.IsFalse(PatientRegisterViewModel.ValidateAddressData(address));
+        }
+
+        [TestMethod]
+        public void ValidateAddressData_WithNull()
+        {
+            //Arrange
+
+            //Act + Assert
+            Assert.IsFalse(PatientRegisterViewModel.ValidateAddressData(null));
         }
     }
 }

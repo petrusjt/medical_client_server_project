@@ -14,7 +14,7 @@ using medical_assistant_client.Exceptions;
 
 namespace medical_assistant_client
 {
-	class PatientRegisterViewModel
+	public class PatientRegisterViewModel
 	{
 		static List<string> ErrorList;
 		public static void SendPatientToServer(Patient patient)
@@ -30,14 +30,15 @@ namespace medical_assistant_client
 				{
 					MessageBox.Show("A szerverrel nem sikerült kapcsolatot létesíteni.");
 				}
-				catch(AggregateException e)
-				{
-					MessageBox.Show("A szerverrel nem sikerült kapcsolatot létesíteni.");
-				}
-				catch(PatientAlreadyRegisteredException e)
+				catch (PatientAlreadyRegisteredException e)
 				{
 					MessageBox.Show("A páciens már szerepel a rendszerben a megadott adatokkal.");
 				}
+				catch (AggregateException e)
+				{
+					MessageBox.Show("A szerverrel nem sikerült kapcsolatot létesíteni.");
+				}
+				
 			}
 			else
 			{
@@ -59,9 +60,19 @@ namespace medical_assistant_client
 
 		public static bool ValidatePatientData(Patient patient)
 		{
+			if(patient == null)
+            {
+				return false;
+            }
+
+			if(ErrorList == null)
+            {
+				ErrorList = new List<string>();
+            }
+
 			string TAJRegex = @"^[0-9]{3} [0-9]{3} [0-9]{3}$";
 			bool isPatientDataValid = true;
-			if(!Regex.IsMatch(patient.TAJ, TAJRegex))
+			if(string.IsNullOrWhiteSpace(patient.TAJ) || !Regex.IsMatch(patient.TAJ, TAJRegex))
 			{
 				ErrorList.Add("A TAJ formátumának 'XXX XXX XXX' kell lennie.");
 				isPatientDataValid = false;
@@ -71,9 +82,9 @@ namespace medical_assistant_client
 				ErrorList.Add("A páciens problémájának leírása nem lehet rövidebb 10 karakternél.");
 				isPatientDataValid = false;
 			}
-			if (string.IsNullOrWhiteSpace(patient.Name) || patient.Name.Length < 9)
+			if (string.IsNullOrWhiteSpace(patient.Name) || patient.Name.Length < 7)
 			{
-				ErrorList.Add("A páciens neve legalább 9 karakterből kell, hogy álljon(szóközzel együtt).");
+				ErrorList.Add("A páciens neve legalább 7 karakterből kell, hogy álljon(szóközzel együtt).");
 				isPatientDataValid = false;
 			}
 
@@ -82,9 +93,18 @@ namespace medical_assistant_client
 
 		public static bool ValidateAddressData(Address address)
 		{
-			bool isAddressValid = true;
+			if(address == null)
+            {
+				return false;
+            }
+			if (ErrorList == null)
+			{
+				ErrorList = new List<string>();
+			}
 
-			if(string.IsNullOrWhiteSpace(address.Country))
+			bool isAddressValid = true;
+			
+			if (string.IsNullOrWhiteSpace(address.Country))
 			{
 				ErrorList.Add("Az országot kötelező megadni.");
 				isAddressValid = false;
