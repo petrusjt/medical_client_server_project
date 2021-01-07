@@ -31,7 +31,7 @@ namespace medical_doctor_client
         private void UpdateTable()
         {
             _patients = PatientDataProvider.GetPatients();
-            PatientsDataGrid.ItemsSource = _patients.OrderByDescending(x=> x.TimeRegistered);
+            PatientsDataGrid.ItemsSource = _patients;
         }
 
         private void PatientsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
